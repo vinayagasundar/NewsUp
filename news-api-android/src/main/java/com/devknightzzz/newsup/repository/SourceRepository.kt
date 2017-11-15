@@ -24,9 +24,6 @@ class SourceRepository : ISourceDataSource {
         AppExecutors.instance.networkIO.execute({
             val sourcesListResponse = newsService.getAllSources().data
 
-
-            Log.i("Hello", Gson().toJson(sourcesListResponse))
-
             if (sourcesListResponse != null) {
                 response.postValue(ApiResponse.success(Source.create(sourcesListResponse)))
             } else {
