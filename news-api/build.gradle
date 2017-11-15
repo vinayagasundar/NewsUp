@@ -1,0 +1,31 @@
+apply plugin: 'kotlin'
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile deps.kotlin.stdlib
+    compile deps.retrofit.runtime
+    compile deps.retrofit.gson
+    compile deps.retrofit.okhttplogger
+
+
+    compile project(':common')
+}
+
+sourceSets {
+    main.java.srcDirs += "src/java"
+    main.resources.srcDirs += "resources"
+    main.kotlin.srcDirs += "src/kotlin"
+//    test.java.srcDirs += "test"
+//    test.kotlin.srcDirs += "test"
+//    test.resources.srcDirs += "testResources"
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+
+kotlin {
+    experimental {
+        coroutines "enable"
+    }
+}

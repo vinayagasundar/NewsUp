@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/NewsUp.iml" filepath="$PROJECT_DIR$/NewsUp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/news-api/news-api.iml" filepath="$PROJECT_DIR$/news-api/news-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/news-api-android/news-api-android.iml" filepath="$PROJECT_DIR$/news-api-android/news-api-android.iml" />
+    </modules>
+  </component>
+</project>
