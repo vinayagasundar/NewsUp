@@ -8,6 +8,7 @@ import com.devknightzzz.newsup.INewsService
 import com.devknightzzz.newsup.ISourceDataSource
 import com.devknightzzz.newsup.NewsApi
 import com.devknightzzz.newsup.core.AppExecutors
+import com.devknightzzz.newsup.database.AppDB
 import com.devknightzzz.newsup.database.entity.Source
 import com.google.gson.Gson
 
@@ -22,10 +23,13 @@ class SourceRepository : ISourceDataSource {
     override fun getAllSources(): LiveData<ApiResponse<List<Source>>> {
         val response = MutableLiveData<ApiResponse<List<Source>>>()
         AppExecutors.instance.networkIO.execute({
-            val sourcesListResponse = newsService.getAllSources().data
+            val listResponse = newsService.getAllSources().data
 
-            if (sourcesListResponse != null) {
-                response.postValue(ApiResponse.success(Source.create(sourcesListResponse)))
+            if (listResponse != null) {
+                val sourceList = Source.create(listResponse)
+
+                AppDB.instance.sourceDao().insert(sourceList)
+                response.postValue(ApiResponse.success(sourceList))
             } else {
                 response.postValue(ApiResponse.error())
             }

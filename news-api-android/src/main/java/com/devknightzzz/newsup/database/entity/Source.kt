@@ -3,20 +3,23 @@ package com.devknightzzz.newsup.database.entity
 import android.arch.persistence.room.Embedded
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
+import android.arch.persistence.room.TypeConverters
+import com.devknightzzz.newsup.database.convertor.SortByConverter
 
 /**
  * @author vinayagasundar
  */
-@Entity
-data class Source(@PrimaryKey val id: String,
-                  val name: String,
-                  val description: String,
-                  val url: String,
-                  val category: String,
-                  val language: String,
-                  val country: String,
-                  @Embedded val urlsToLogs: LogoURL?,
-                  val sortBysAvailable: List<String>) {
+@Entity(tableName = "source")
+@TypeConverters(SortByConverter::class)
+data class Source(@PrimaryKey var id: String,
+                  var name: String,
+                  var description: String,
+                  var url: String,
+                  var category: String,
+                  var language: String,
+                  var country: String,
+                  @Embedded var urlsToLogs: LogoURL?,
+                  var sortBysAvailable: List<String>) {
 
 
     companion object {

@@ -44,6 +44,8 @@ dependencies {
     // Modules
     api project(':news-api-android')
 
+    debugImplementation deps.debug_db
+
 
 //    // Dependencies for local unit tests
 //    testImplementation deps.junit
