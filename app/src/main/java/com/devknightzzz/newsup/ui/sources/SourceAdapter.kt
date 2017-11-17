@@ -57,9 +57,9 @@ class SourceAdapter(private val context: Context) : RecyclerView.Adapter<SourceA
     }
 
     class SourceViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        var logoImage: ImageView = view.findViewById(R.id.logo_image)
-        var nameText: TextView = view.findViewById(R.id.name)
-        var selectionView: View = view.findViewById(R.id.selection_view)
+        private var logoImage: ImageView = view.findViewById(R.id.logo_image)
+        private var nameText: TextView = view.findViewById(R.id.name)
+        private var selectionView: View = view.findViewById(R.id.selection_view)
 
         fun bind(source: Source, level: Int = 0) {
             nameText.text = source.name
