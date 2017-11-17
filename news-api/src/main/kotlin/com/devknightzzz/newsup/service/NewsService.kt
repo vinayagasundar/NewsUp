@@ -17,12 +17,15 @@ class NewsService : INewsService {
 
     private val apiSource: NewsOrgAPI by lazy {
 
+        val logging = HttpLoggingInterceptor()
+        logging.level = HttpLoggingInterceptor.Level.BODY
+
         val okHttp = OkHttpClient.Builder()
-                .addInterceptor(HttpLoggingInterceptor())
+                .addInterceptor(logging)
                 .build()
 
         val retrofit: Retrofit = Retrofit.Builder()
-                .baseUrl("https://newsapi.org/v1/")
+                .baseUrl("https://newsapi.org/v2/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(okHttp)
                 .build()

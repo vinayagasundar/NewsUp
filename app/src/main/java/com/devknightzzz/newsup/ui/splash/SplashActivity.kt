@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity
 import com.devknightzzz.newsup.ISettingDataSource
 import com.devknightzzz.newsup.ui.landing.LandingActivity
 import com.devknightzzz.newsup.NewsAndroidAPI
+import com.devknightzzz.newsup.ui.onboarding.OnBoardingActivity
 
 class SplashActivity : AppCompatActivity() {
 
@@ -17,9 +18,9 @@ class SplashActivity : AppCompatActivity() {
 
         val redirectScreen = if (settingDataSource.isFirstLaunch()) {
             settingDataSource.setFirstLaunch(false)
-            LandingActivity::class.java
+            OnBoardingActivity::class.java
         } else {
-            LandingActivity::class.java
+            OnBoardingActivity::class.java
         }
 
         Handler().postDelayed({

@@ -11,6 +11,9 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        /*Enabled Vector Support*/
+        vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
         release {
@@ -24,6 +27,12 @@ dependencies {
     /* Support libraries */
     implementation deps.support.app_compat
     implementation deps.support.design
+    implementation deps.support.cardview
+
+
+
+    implementation deps.glide
+
 
     /* Architecture components */
 
