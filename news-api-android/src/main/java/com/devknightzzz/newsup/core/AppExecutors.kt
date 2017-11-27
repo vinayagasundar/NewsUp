@@ -8,17 +8,9 @@ import java.util.concurrent.Executors
 /**
  * @author vinayagasundar
  */
-class AppExecutors private constructor() {
-
-    val diskIO: Executor
-    val networkIO: Executor
-    val mainThread: Executor
-
-    init {
-        diskIO = Executors.newSingleThreadExecutor()
-        networkIO = Executors.newFixedThreadPool(3)
-        mainThread = MainThreadExecutor()
-    }
+class AppExecutors(val diskIO: Executor = Executors.newSingleThreadExecutor(),
+                   val networkIO: Executor = Executors.newFixedThreadPool(3),
+                   val mainThread: Executor = MainThreadExecutor()) {
 
     companion object {
         val instance: AppExecutors by lazy {

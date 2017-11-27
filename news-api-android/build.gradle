@@ -51,4 +51,7 @@ dependencies {
 
     // Kotlin
     implementation deps.kotlin.stdlib
+
+    // ThreeTen Time Libs
+    implementation deps.threetenabp
 }
