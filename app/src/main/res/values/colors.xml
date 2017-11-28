@@ -14,6 +14,10 @@
     <color name="source_selected">#5e4bff1e</color>
 
 
+    <color name="subscribe_enabled">#1b5e20</color>
+    <color name="subscribe_disabled">#757575</color>
+
+
     <color name="colorPrimary">@color/primary</color>
     <color name="colorPrimaryDark">@color/primary_dark</color>
     <color name="colorAccent">@color/accent</color>

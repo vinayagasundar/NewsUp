@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">NewsUp</string>
+    <string name="subscribe_source_btn">Subscribe</string>
 </resources>

@@ -46,4 +46,15 @@ class PrefUtils private constructor(private val context: Context) {
         return prefs.getLong(key, defaultValue)
     }
 
+
+    fun putString(key: String, value: String?) {
+        prefs.edit()
+                .putString(key, value)
+                .apply()
+    }
+
+    fun getString(key: String, defaultValue: String? = null): String? {
+        return prefs.getString(key, defaultValue)
+    }
+
 }

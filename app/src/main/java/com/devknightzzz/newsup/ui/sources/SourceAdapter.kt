@@ -1,7 +1,6 @@
 package com.devknightzzz.newsup.ui.sources
 
 import android.content.Context
-import android.graphics.Color
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -16,7 +15,9 @@ import com.devknightzzz.newsup.database.entity.Source
 /**
  * @author vinayagasundar
  */
-class SourceAdapter(private val context: Context) : RecyclerView.Adapter<SourceAdapter.SourceViewHolder>() {
+class SourceAdapter(private val context: Context,
+                    private var callback: Callback? = null)
+    : RecyclerView.Adapter<SourceAdapter.SourceViewHolder>() {
 
     private val data: MutableList<Source> = mutableListOf()
     private val selectedData: MutableList<Source> = mutableListOf()
@@ -47,6 +48,8 @@ class SourceAdapter(private val context: Context) : RecyclerView.Adapter<SourceA
                 selectedData.add(source)
             }
 
+            callback?.onSourceSelectionChanged(selectedData)
+
             notifyItemChanged(holder.adapterPosition)
         }
     }
@@ -54,6 +57,10 @@ class SourceAdapter(private val context: Context) : RecyclerView.Adapter<SourceA
     fun add(data: List<Source>) {
         this.data.addAll(data)
         notifyDataSetChanged()
+    }
+
+    fun getSelectedSources(): MutableList<Source> {
+        return selectedData
     }
 
     class SourceViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -75,5 +82,9 @@ class SourceAdapter(private val context: Context) : RecyclerView.Adapter<SourceA
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .into(logoImage)
         }
+    }
+
+    interface Callback {
+        fun onSourceSelectionChanged(selectedSources: List<Source>)
     }
 }

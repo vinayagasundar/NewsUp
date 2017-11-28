@@ -20,7 +20,7 @@ class SplashActivity : AppCompatActivity() {
             settingDataSource.setFirstLaunch(false)
             OnBoardingActivity::class.java
         } else {
-            OnBoardingActivity::class.java
+            LandingActivity::class.java
         }
 
         Handler().postDelayed({

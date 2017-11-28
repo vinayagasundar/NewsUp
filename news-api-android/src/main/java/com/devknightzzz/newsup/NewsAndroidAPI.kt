@@ -32,5 +32,6 @@ class NewsAndroidAPI private constructor(context: Context) {
             getSettingDataSource(),
             AppExecutors.instance)
 
-    fun getSettingDataSource(): ISettingDataSource = SettingRepository(PrefUtils.instance)
+    fun getSettingDataSource(): ISettingDataSource = SettingRepository(PrefUtils.instance,
+            AppExecutors.instance)
 }
