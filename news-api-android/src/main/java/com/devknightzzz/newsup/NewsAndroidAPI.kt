@@ -5,7 +5,8 @@ import android.content.Context
 import com.devknightzzz.newsup.core.AppExecutors
 import com.devknightzzz.newsup.database.AppDB
 import com.devknightzzz.newsup.database.local.PrefUtils
-import com.devknightzzz.newsup.repository.SourceRepository
+import com.devknightzzz.newsup.repository.articles.ArticleRepository
+import com.devknightzzz.newsup.repository.sources.SourceRepository
 import com.devknightzzz.newsup.repository.setting.SettingRepository
 import com.jakewharton.threetenabp.AndroidThreeTen
 
@@ -33,5 +34,8 @@ class NewsAndroidAPI private constructor(context: Context) {
             AppExecutors.instance)
 
     fun getSettingDataSource(): ISettingDataSource = SettingRepository(PrefUtils.instance,
+            AppExecutors.instance)
+
+    fun getArticleDataSource(): IArticleDataSource = ArticleRepository(NewsApi.newsService,
             AppExecutors.instance)
 }

@@ -2,6 +2,7 @@ package com.devknightzzz.newsup.service
 
 import com.devknightzzz.newsup.ApiResponse
 import com.devknightzzz.newsup.INewsService
+import com.devknightzzz.newsup.model.Article
 import com.devknightzzz.newsup.model.Source
 import com.devknightzzz.newsup.network.NewsOrgAPI
 import okhttp3.OkHttpClient
@@ -47,6 +48,28 @@ class NewsService : INewsService {
 
             if (sourceList?.isValid() != null && sourceList.sources?.isNotEmpty() != null) {
                 return ApiResponse.success(sourceList.sources)
+            }
+        }
+
+        return ApiResponse.error()
+    }
+
+
+    override fun getArticles(sources: String?, query: String?,
+                             category: String?, language: String?): ApiResponse<List<Article>> {
+        val fileInputStream = this::class.java.classLoader.getResourceAsStream("keys.properties")
+        val props = Properties()
+        props.load(fileInputStream)
+        val keys = props.getProperty("news.api.key")
+
+        val articleListResponse = apiSource.getArticles(keys, sources, query, category, language)
+                .execute()
+
+        if (articleListResponse.isSuccessful) {
+            val articleList = articleListResponse.body()
+
+            if (articleList?.isValid() != null && articleList.articles?.isNotEmpty() != null) {
+                return ApiResponse.success(articleList.articles)
             }
         }
 

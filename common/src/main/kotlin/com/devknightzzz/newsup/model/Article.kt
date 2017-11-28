@@ -8,4 +8,5 @@ data class Article(val author: String,
                    val description: String,
                    val url: String,
                    val urlToImage: String,
-                   val publishedAt: String)
+                   val publishedAt: String,
+                   val source: Pair<String, String>)

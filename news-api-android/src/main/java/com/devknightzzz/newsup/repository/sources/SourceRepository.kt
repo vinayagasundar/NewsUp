@@ -1,4 +1,4 @@
-package com.devknightzzz.newsup.repository
+package com.devknightzzz.newsup.repository.sources
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
