@@ -1,4 +1,4 @@
-package com.devknightzzz.newsup.ui.sources
+package com.devknightzzz.newsup.ui.sources.selection
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
@@ -15,9 +15,9 @@ import com.devknightzzz.newsup.database.entity.Source
 /**
  * @author vinayagasundar
  */
-class SourceAdapter(private val context: Context,
-                    private var callback: Callback? = null)
-    : RecyclerView.Adapter<SourceAdapter.SourceViewHolder>() {
+class SourceSelectionAdapter(private val context: Context,
+                             private var callback: Callback? = null)
+    : RecyclerView.Adapter<SourceSelectionAdapter.SourceViewHolder>() {
 
     private val data: MutableList<Source> = mutableListOf()
     private val selectedData: MutableList<Source> = mutableListOf()
