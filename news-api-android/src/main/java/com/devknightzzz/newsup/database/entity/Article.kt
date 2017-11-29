@@ -29,7 +29,7 @@ data class Article(@PrimaryKey(autoGenerate = true) val id: Int = 0,
             return articleList
         }
 
-        fun create(data: com.devknightzzz.newsup.model.Article)
+        private fun create(data: com.devknightzzz.newsup.model.Article)
                 : com.devknightzzz.newsup.database.entity.Article {
             return com.devknightzzz.newsup.database.entity.Article(0, data.author,
                     data.title, data.description, data.url, data.urlToImage,
