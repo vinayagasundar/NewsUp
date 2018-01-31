@@ -15,7 +15,9 @@ class ArticleRepository(private val newsService: INewsService,
                         private val appExecutors: AppExecutors): IArticleDataSource {
 
 
-
+    override fun getArticlesFromSubscription(): LiveData<ApiResponse<List<Article>>> {
+        return MutableLiveData<ApiResponse<List<Article>>>()
+    }
 
     override fun getArticles(sources: String?,
                              query: String?,

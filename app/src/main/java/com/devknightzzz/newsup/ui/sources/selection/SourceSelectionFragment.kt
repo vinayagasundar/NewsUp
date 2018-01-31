@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.fragment_source_selection.*
  */
 class SourceSelectionFragment : NewsUpFragment() {
 
-    private var sourceViewModel: SourceSelectionViewModel? = null
+    private lateinit var sourceViewModel: SourceSelectionViewModel
 
     private val sourceSelectionAdapter: SourceSelectionAdapter by lazy {
         SourceSelectionAdapter(activity, object : SourceSelectionAdapter.Callback {
@@ -46,7 +46,7 @@ class SourceSelectionFragment : NewsUpFragment() {
         sourceViewModel = ViewModelProviders.of(this)[SourceSelectionViewModel::class.java]
 
         progress_bar.visibility = View.VISIBLE
-        sourceViewModel?.getAllSources()?.observe(this, Observer {
+        sourceViewModel.getAllSources().observe(this, Observer {
             it?.let {
                 if (it.status == Status.SUCCESS) {
                     displayInRecyclerView(it.data)
@@ -56,7 +56,7 @@ class SourceSelectionFragment : NewsUpFragment() {
 
         subscribe_source_btn.setOnClickListener {
             if (sourceSelectionAdapter.getSelectedSources().isNotEmpty()) {
-                sourceViewModel?.addSelectedSource(sourceSelectionAdapter.getSelectedSources())
+                sourceViewModel.addSelectedSource(sourceSelectionAdapter.getSelectedSources())
                 startActivity(Intent(activity, LandingActivity::class.java))
             }
         }

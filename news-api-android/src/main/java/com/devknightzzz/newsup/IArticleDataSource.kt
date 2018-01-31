@@ -8,6 +8,9 @@ import com.devknightzzz.newsup.database.entity.Article
  */
 interface IArticleDataSource {
 
+
+    fun getArticlesFromSubscription(): LiveData<ApiResponse<List<Article>>>
+
     fun getArticles(sources: String? = null,
                     query: String? = null,
                     category: String? = null,
